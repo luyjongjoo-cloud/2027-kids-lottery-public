@@ -10,7 +10,6 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <!-- Lucide Icons 로드 -->
     <script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -152,7 +151,7 @@
                 </form>
 
                 <!-- 샘플 데이터 테스트 힌트 (접이식) -->
-                <div class="hidden mt-6 pt-5 border-t border-slate-100">
+                <div class="mt-6 pt-5 border-t border-slate-100">
                     <button type="button" onclick="toggleSampleHint()" class="w-full flex items-center justify-between text-xs sm:text-sm text-slate-500 hover:text-ddm-700 font-medium transition py-1">
                         <span class="flex items-center gap-1.5">
                             <i data-lucide="help-circle" class="w-4 h-4 text-ddm-500"></i>
@@ -195,12 +194,12 @@
                     </div>
                     <div>
                         <p class="font-bold text-slate-800">동대문구민체육센터 유아체능단 사무실</p>
-                        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00 제외)</p>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">평일 10:00~17:00(점심시간 12:00~13:00)</p>
                     </div>
                 </div>
                 <div class="text-left sm:text-right pl-12 sm:pl-0">
-                    <span class="text-base font-extrabold text-ddm-800">02-2247-9772~5</span>
-                    <p class="text-xs text-slate-500">내선 유아체능단 담당자</p>
+                    <span class="text-base font-extrabold text-ddm-800">02-6929-0768</span>
+                    <p class="text-xs text-slate-500">문의전화</p>
                 </div>
             </div>
         </section>
@@ -217,12 +216,12 @@
                         <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-slate-800 text-white">ADMIN</span>
                         <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900">유아체능단 추첨 명단 관리</h2>
                     </div>
-                    <p class="text-sm text-slate-500 mt-1">추첨 결과 명단을 일괄 등록하거나 개별 수정·관리할 수 있습니다. (브라우저 자동 저장 · HTML 저장으로 파일에 반영)</p>
+                    <p class="text-sm text-slate-500 mt-1">추첨 결과 명단을 일괄 등록하거나 개별 수정·관리할 수 있습니다. (브라우저 자동 저장)</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
                     <button onclick="openBulkModal()" class="px-4 py-2.5 bg-ddm-700 hover:bg-ddm-800 text-white text-sm font-bold rounded-xl shadow-xs transition flex items-center gap-1.5">
                         <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
-                        <span>엑셀 / CSV 업로드 및 붙여넣기 업로드</span>
+                        <span>엑셀 붙여넣기 / CSV 업로드</span>
                     </button>
                     <button onclick="openAddEditModal()" class="px-4 py-2.5 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-sm font-bold rounded-xl shadow-xs transition flex items-center gap-1.5">
                         <i data-lucide="user-plus" class="w-4 h-4"></i>
@@ -294,7 +293,6 @@
                     </div>
 
                     <div class="flex items-center gap-2 self-end md:self-auto">
-                        <button onclick="exportHTML()" class="px-3 py-2 bg-ddm-700 text-white rounded-lg text-xs font-bold">HTML 저장</button>
                         <button onclick="exportCSV()" class="px-3 py-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5">
                             <i data-lucide="download" class="w-3.5 h-3.5"></i>
                             <span>CSV 다운로드</span>
@@ -387,7 +385,7 @@
                     <div class="p-2 bg-ddm-50 rounded-lg text-ddm-700">
                         <i data-lucide="file-spreadsheet" class="w-5 h-5"></i>
                     </div>
-                    <h3 class="text-lg font-extrabold text-slate-900">엑셀 / CSV 업로드 및 붙여넣기 일괄 업로드</h3>
+                    <h3 class="text-lg font-extrabold text-slate-900">엑셀 붙여넣기 / CSV 일괄 업로드</h3>
                 </div>
                 <button onclick="closeModal('bulkUploadModal')" class="text-slate-400 hover:text-slate-600 p-1">
                     <i data-lucide="x" class="w-5 h-5"></i>
@@ -396,9 +394,9 @@
 
             <!-- CSV 파일 업로드 영역 -->
             <div class="mb-5">
-                <label class="block text-sm font-bold text-slate-700 mb-2">방법 1. 엑셀 / CSV 파일 업로드</label>
+                <label class="block text-sm font-bold text-slate-700 mb-2">방법 1. CSV 파일 업로드</label>
                 <div class="flex items-center gap-3">
-                    <input type="file" id="csvFileInput" accept=".xlsx,.xls,.csv,.txt" onchange="handleCSVFile(event)"
+                    <input type="file" id="csvFileInput" accept=".csv,.txt" onchange="handleCSVFile(event)"
                         class="block w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-ddm-50 file:text-ddm-700 hover:file:bg-ddm-100 border border-slate-200 rounded-xl p-1.5">
                 </div>
             </div>
@@ -522,7 +520,7 @@
     <!-- JavaScript 애플리케이션 로직 -->
     <script>
         // 로컬 스토리지 키 및 초기 관리자 비밀번호
-        const STORAGE_KEY = 'ddm_sports_kids_2027_lottery_v2';
+        const STORAGE_KEY = 'ddm_sports_kids_2027_lottery';
         const ADMIN_PASS = 'admin1234';
 
         // 기본 샘플 데이터 (10명)
@@ -540,31 +538,33 @@
         ];
 
         // 전역 상태
-        const EMBEDDED_DATA = [{"id": "1", "regNo": "", "name": "이지안", "phone": "6304", "className": "5세 펭귄반(남아)", "status": "당첨", "waitRank": null}, {"id": "2", "regNo": "", "name": "한리호", "phone": "9489", "className": "5세 펭귄반(남아)", "status": "당첨", "waitRank": null}, {"id": "3", "regNo": "", "name": "김루희", "phone": "8534", "className": "5세 펭귄반(남아)", "status": "당첨", "waitRank": null}, {"id": "4", "regNo": "", "name": "조율", "phone": "1767", "className": "5세 펭귄반(남아)", "status": "당첨", "waitRank": null}, {"id": "5", "regNo": "", "name": "김호찬", "phone": "2277", "className": "5세 펭귄반(남아)", "status": "당첨", "waitRank": null}, {"id": "6", "regNo": "", "name": "정주영", "phone": "1568", "className": "5세 펭귄반(남아)", "status": "당첨", "waitRank": null}, {"id": "7", "regNo": "", "name": "정재하", "phone": "5205", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 1}, {"id": "8", "regNo": "", "name": "김로은", "phone": "2620", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 2}, {"id": "9", "regNo": "", "name": "홍은석", "phone": "2989", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 3}, {"id": "10", "regNo": "", "name": "신정우", "phone": "9354", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 4}, {"id": "11", "regNo": "", "name": "임시우", "phone": "1791", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 5}, {"id": "12", "regNo": "", "name": "김하진", "phone": "3992", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 6}, {"id": "13", "regNo": "", "name": "김민창", "phone": "0922", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 7}, {"id": "14", "regNo": "", "name": "박시후", "phone": "2667", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 8}, {"id": "15", "regNo": "", "name": "민도준", "phone": "0110", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 9}, {"id": "16", "regNo": "", "name": "최이현", "phone": "0917", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 10}, {"id": "17", "regNo": "", "name": "윤도진", "phone": "8263", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 11}, {"id": "18", "regNo": "", "name": "이도하", "phone": "4006", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 12}, {"id": "19", "regNo": "", "name": "김유건", "phone": "1710", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 13}, {"id": "20", "regNo": "", "name": "이환이", "phone": "1978", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 14}, {"id": "21", "regNo": "", "name": "조은호", "phone": "0158", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 15}, {"id": "22", "regNo": "", "name": "김하진", "phone": "0763", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 16}, {"id": "23", "regNo": "", "name": "양세진", "phone": "1480", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 17}, {"id": "24", "regNo": "", "name": "최유준", "phone": "2335", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 18}, {"id": "25", "regNo": "", "name": "이상윤", "phone": "3397", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 19}, {"id": "26", "regNo": "", "name": "문강민", "phone": "6662", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 20}, {"id": "27", "regNo": "", "name": "김단우", "phone": "4274", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 21}, {"id": "28", "regNo": "", "name": "성유하", "phone": "1832", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 22}, {"id": "29", "regNo": "", "name": "김지후", "phone": "1067", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 23}, {"id": "30", "regNo": "", "name": "김도건", "phone": "7822", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 24}, {"id": "31", "regNo": "", "name": "나지호", "phone": "1773", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 25}, {"id": "32", "regNo": "", "name": "고태이", "phone": "2345", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 26}, {"id": "33", "regNo": "", "name": "박재영", "phone": "3137", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 27}, {"id": "34", "regNo": "", "name": "서이안", "phone": "1540", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 28}, {"id": "35", "regNo": "", "name": "이시안", "phone": "0045", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 29}, {"id": "36", "regNo": "", "name": "배지우", "phone": "4624", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 30}, {"id": "37", "regNo": "", "name": "김이겸", "phone": "7026", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 31}, {"id": "38", "regNo": "", "name": "전해솔", "phone": "6050", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 32}, {"id": "39", "regNo": "", "name": "김용준", "phone": "5930", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 33}, {"id": "40", "regNo": "", "name": "강영준", "phone": "2107", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 34}, {"id": "41", "regNo": "", "name": "박도현", "phone": "6352", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 35}, {"id": "42", "regNo": "", "name": "박재이", "phone": "0054", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 36}, {"id": "43", "regNo": "", "name": "이수호", "phone": "2171", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 37}, {"id": "44", "regNo": "", "name": "조우영", "phone": "9223", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 38}, {"id": "45", "regNo": "", "name": "김재윤", "phone": "3779", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 39}, {"id": "46", "regNo": "", "name": "황지원", "phone": "7724", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 40}, {"id": "47", "regNo": "", "name": "안지안", "phone": "5163", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 41}, {"id": "48", "regNo": "", "name": "류다니엘", "phone": "0914", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 42}, {"id": "49", "regNo": "", "name": "송해인", "phone": "5038", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 43}, {"id": "50", "regNo": "", "name": "정모마", "phone": "7964", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 44}, {"id": "51", "regNo": "", "name": "정이한", "phone": "4714", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 45}, {"id": "52", "regNo": "", "name": "장준우", "phone": "8092", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 46}, {"id": "53", "regNo": "", "name": "김진율", "phone": "5860", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 47}, {"id": "54", "regNo": "", "name": "이서진", "phone": "7885", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 48}, {"id": "55", "regNo": "", "name": "유리오", "phone": "5532", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 49}, {"id": "56", "regNo": "", "name": "이현우", "phone": "9509", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 50}, {"id": "57", "regNo": "", "name": "장유민", "phone": "5434", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 51}, {"id": "58", "regNo": "", "name": "박지율", "phone": "5130", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 52}, {"id": "59", "regNo": "", "name": "이민준", "phone": "7426", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 53}, {"id": "60", "regNo": "", "name": "황서진", "phone": "8611", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 54}, {"id": "61", "regNo": "", "name": "이지한", "phone": "2688", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 55}, {"id": "62", "regNo": "", "name": "이도현", "phone": "9699", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 56}, {"id": "63", "regNo": "", "name": "정윤우", "phone": "9406", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 57}, {"id": "64", "regNo": "", "name": "임서진", "phone": "5852", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 58}, {"id": "65", "regNo": "", "name": "오서후", "phone": "1209", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 59}, {"id": "66", "regNo": "", "name": "신준서", "phone": "5829", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 60}, {"id": "67", "regNo": "", "name": "노형준", "phone": "2232", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 61}, {"id": "68", "regNo": "", "name": "이도", "phone": "2335", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 62}, {"id": "69", "regNo": "", "name": "박시나", "phone": "2795", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 63}, {"id": "70", "regNo": "", "name": "장한결", "phone": "9996", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 64}, {"id": "71", "regNo": "", "name": "양도현", "phone": "2809", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 65}, {"id": "72", "regNo": "", "name": "김도하", "phone": "6647", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 66}, {"id": "73", "regNo": "", "name": "이원준", "phone": "6729", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 67}, {"id": "74", "regNo": "", "name": "이주혁", "phone": "8372", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 68}, {"id": "75", "regNo": "", "name": "이한", "phone": "2224", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 69}, {"id": "76", "regNo": "", "name": "이종우", "phone": "2457", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 70}, {"id": "77", "regNo": "", "name": "이현준", "phone": "5477", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 71}, {"id": "78", "regNo": "", "name": "백아인", "phone": "2985", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 72}, {"id": "79", "regNo": "", "name": "정이현", "phone": "4017", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 73}, {"id": "80", "regNo": "", "name": "이태서", "phone": "6583", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 74}, {"id": "81", "regNo": "", "name": "이하준", "phone": "2130", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 75}, {"id": "82", "regNo": "", "name": "권영호", "phone": "5082", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 76}, {"id": "83", "regNo": "", "name": "김이든", "phone": "5557", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 77}, {"id": "84", "regNo": "", "name": "문희성", "phone": "5986", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 78}, {"id": "85", "regNo": "", "name": "전유승", "phone": "2589", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 79}, {"id": "86", "regNo": "", "name": "오건우", "phone": "4141", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 80}, {"id": "87", "regNo": "", "name": "허원", "phone": "9846", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 81}, {"id": "88", "regNo": "", "name": "정유건", "phone": "6788", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 82}, {"id": "89", "regNo": "", "name": "김이수", "phone": "0724", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 83}, {"id": "90", "regNo": "", "name": "정이로운", "phone": "6478", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 84}, {"id": "91", "regNo": "", "name": "이수호", "phone": "9008", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 85}, {"id": "92", "regNo": "", "name": "이지우", "phone": "0919", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 86}, {"id": "93", "regNo": "", "name": "박민", "phone": "0232", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 87}, {"id": "94", "regNo": "", "name": "김재이", "phone": "3292", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 88}, {"id": "95", "regNo": "", "name": "박유안", "phone": "8008", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 89}, {"id": "96", "regNo": "", "name": "김바인", "phone": "4426", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 90}, {"id": "97", "regNo": "", "name": "이우승", "phone": "4994", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 91}, {"id": "98", "regNo": "", "name": "유동하", "phone": "7887", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 92}, {"id": "99", "regNo": "", "name": "박진서", "phone": "5665", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 93}, {"id": "100", "regNo": "", "name": "양해솔", "phone": "5729", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 94}, {"id": "101", "regNo": "", "name": "권태후", "phone": "9505", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 95}, {"id": "102", "regNo": "", "name": "박도범", "phone": "7040", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 96}, {"id": "103", "regNo": "", "name": "김건우", "phone": "4657", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 97}, {"id": "104", "regNo": "", "name": "정우담", "phone": "6469", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 98}, {"id": "105", "regNo": "", "name": "이한준", "phone": "8737", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 99}, {"id": "106", "regNo": "", "name": "강다현", "phone": "4226", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 100}, {"id": "107", "regNo": "", "name": "이은성", "phone": "5025", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 101}, {"id": "108", "regNo": "", "name": "박서준", "phone": "6950", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 102}, {"id": "109", "regNo": "", "name": "홍유강", "phone": "3909", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 103}, {"id": "110", "regNo": "", "name": "최정원", "phone": "1025", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 104}, {"id": "111", "regNo": "", "name": "김규빈", "phone": "9891", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 105}, {"id": "112", "regNo": "", "name": "김류호", "phone": "0282", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 106}, {"id": "113", "regNo": "", "name": "최이준", "phone": "4465", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 107}, {"id": "114", "regNo": "", "name": "박이준", "phone": "4000", "className": "5세 펭귄반(남아)", "status": "대기", "waitRank": 108}, {"id": "115", "regNo": "", "name": "주시은", "phone": "7891", "className": "5세 펭귄반(여아)", "status": "당첨", "waitRank": null}, {"id": "116", "regNo": "", "name": "조서하", "phone": "4145", "className": "5세 펭귄반(여아)", "status": "당첨", "waitRank": null}, {"id": "117", "regNo": "", "name": "신서현", "phone": "7658", "className": "5세 펭귄반(여아)", "status": "당첨", "waitRank": null}, {"id": "118", "regNo": "", "name": "이하민", "phone": "6137", "className": "5세 펭귄반(여아)", "status": "당첨", "waitRank": null}, {"id": "119", "regNo": "", "name": "한다인", "phone": "6466", "className": "5세 펭귄반(여아)", "status": "당첨", "waitRank": null}, {"id": "120", "regNo": "", "name": "최서우", "phone": "4214", "className": "5세 펭귄반(여아)", "status": "당첨", "waitRank": null}, {"id": "121", "regNo": "", "name": "전하리", "phone": "1946", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 1}, {"id": "122", "regNo": "", "name": "이재이", "phone": "3104", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 2}, {"id": "123", "regNo": "", "name": "김리원", "phone": "0130", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 3}, {"id": "124", "regNo": "", "name": "박서우", "phone": "4129", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 4}, {"id": "125", "regNo": "", "name": "박재희", "phone": "2186", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 5}, {"id": "126", "regNo": "", "name": "최아영", "phone": "0522", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 6}, {"id": "127", "regNo": "", "name": "정은지", "phone": "0417", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 7}, {"id": "128", "regNo": "", "name": "이유주", "phone": "2458", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 8}, {"id": "129", "regNo": "", "name": "이민준", "phone": "1170", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 9}, {"id": "130", "regNo": "", "name": "최하나", "phone": "7026", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 10}, {"id": "131", "regNo": "", "name": "김도아", "phone": "4993", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 11}, {"id": "132", "regNo": "", "name": "이소율", "phone": "3793", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 12}, {"id": "133", "regNo": "", "name": "박제이", "phone": "8626", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 13}, {"id": "134", "regNo": "", "name": "정서희", "phone": "6268", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 14}, {"id": "135", "regNo": "", "name": "이시아", "phone": "3395", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 15}, {"id": "136", "regNo": "", "name": "이소봄", "phone": "4289", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 16}, {"id": "137", "regNo": "", "name": "최서윤", "phone": "3908", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 17}, {"id": "138", "regNo": "", "name": "육지아", "phone": "1252", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 18}, {"id": "139", "regNo": "", "name": "김하윤", "phone": "9345", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 19}, {"id": "140", "regNo": "", "name": "김지연", "phone": "8410", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 20}, {"id": "141", "regNo": "", "name": "남하연", "phone": "9900", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 21}, {"id": "142", "regNo": "", "name": "최소윤", "phone": "8353", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 22}, {"id": "143", "regNo": "", "name": "이로하", "phone": "7281", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 23}, {"id": "144", "regNo": "", "name": "박서아", "phone": "6412", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 24}, {"id": "145", "regNo": "", "name": "오세아", "phone": "6034", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 25}, {"id": "146", "regNo": "", "name": "황예리", "phone": "4852", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 26}, {"id": "147", "regNo": "", "name": "이윤설", "phone": "1711", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 27}, {"id": "148", "regNo": "", "name": "문로하", "phone": "8000", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 28}, {"id": "149", "regNo": "", "name": "조이현", "phone": "0812", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 29}, {"id": "150", "regNo": "", "name": "박이현", "phone": "7238", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 30}, {"id": "151", "regNo": "", "name": "박단우", "phone": "9866", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 31}, {"id": "152", "regNo": "", "name": "이다연", "phone": "2677", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 32}, {"id": "153", "regNo": "", "name": "정봄", "phone": "8197", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 33}, {"id": "154", "regNo": "", "name": "김지안", "phone": "4888", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 34}, {"id": "155", "regNo": "", "name": "최하윤", "phone": "1162", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 35}, {"id": "156", "regNo": "", "name": "송주연", "phone": "2632", "className": "5세 펭귄반(여아)", "status": "대기", "waitRank": 36}, {"id": "157", "regNo": "", "name": "우빈", "phone": "0922", "className": "6세 물개반(남아)", "status": "당첨", "waitRank": null}, {"id": "158", "regNo": "", "name": "전시환", "phone": "1277", "className": "6세 물개반(남아)", "status": "당첨", "waitRank": null}, {"id": "159", "regNo": "", "name": "안고윤", "phone": "0625", "className": "6세 물개반(남아)", "status": "당첨", "waitRank": null}, {"id": "160", "regNo": "", "name": "김래오", "phone": "6543", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 1}, {"id": "161", "regNo": "", "name": "임지호", "phone": "3117", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 2}, {"id": "162", "regNo": "", "name": "김로운", "phone": "9106", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 3}, {"id": "163", "regNo": "", "name": "최연우", "phone": "6785", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 4}, {"id": "164", "regNo": "", "name": "임은호", "phone": "9340", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 5}, {"id": "165", "regNo": "", "name": "윤겨울", "phone": "5046", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 6}, {"id": "166", "regNo": "", "name": "윤지후", "phone": "8403", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 7}, {"id": "167", "regNo": "", "name": "이도하", "phone": "8787", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 8}, {"id": "168", "regNo": "", "name": "권선우", "phone": "1482", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 9}, {"id": "169", "regNo": "", "name": "신이준", "phone": "2167", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 10}, {"id": "170", "regNo": "", "name": "이로하", "phone": "6066", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 11}, {"id": "171", "regNo": "", "name": "문도윤", "phone": "7015", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 12}, {"id": "172", "regNo": "", "name": "강하민", "phone": "3408", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 13}, {"id": "173", "regNo": "", "name": "정서우", "phone": "3781", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 14}, {"id": "174", "regNo": "", "name": "이준", "phone": "4320", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 15}, {"id": "175", "regNo": "", "name": "장은호", "phone": "1714", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 16}, {"id": "176", "regNo": "", "name": "표수호", "phone": "6860", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 17}, {"id": "177", "regNo": "", "name": "최선우", "phone": "8380", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 18}, {"id": "178", "regNo": "", "name": "서민교", "phone": "7940", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 19}, {"id": "179", "regNo": "", "name": "강우주", "phone": "0605", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 20}, {"id": "180", "regNo": "", "name": "장시안", "phone": "9905", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 21}, {"id": "181", "regNo": "", "name": "안서진", "phone": "1430", "className": "6세 물개반(남아)", "status": "대기", "waitRank": 22}, {"id": "182", "regNo": "", "name": "권나율", "phone": "2468", "className": "6세 물개반(여아)", "status": "당첨", "waitRank": null}, {"id": "183", "regNo": "", "name": "송예나", "phone": "5376", "className": "6세 물개반(여아)", "status": "당첨", "waitRank": null}, {"id": "184", "regNo": "", "name": "윤세연", "phone": "2818", "className": "6세 물개반(여아)", "status": "당첨", "waitRank": null}, {"id": "185", "regNo": "", "name": "김서윤", "phone": "1111", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 1}, {"id": "186", "regNo": "", "name": "김태리", "phone": "4411", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 2}, {"id": "187", "regNo": "", "name": "박지안", "phone": "5738", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 3}, {"id": "188", "regNo": "", "name": "전우주", "phone": "1946", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 4}, {"id": "189", "regNo": "", "name": "홍채원", "phone": "2684", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 5}, {"id": "190", "regNo": "", "name": "조은유", "phone": "1017", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 6}, {"id": "191", "regNo": "", "name": "황이음", "phone": "8523", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 7}, {"id": "192", "regNo": "", "name": "김이나", "phone": "5005", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 8}, {"id": "193", "regNo": "", "name": "이나윤", "phone": "8808", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 9}, {"id": "194", "regNo": "", "name": "최아리", "phone": "3873", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 10}, {"id": "195", "regNo": "", "name": "이루다", "phone": "2286", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 11}, {"id": "196", "regNo": "", "name": "임나은", "phone": "1936", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 12}, {"id": "197", "regNo": "", "name": "강지원", "phone": "1165", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 13}, {"id": "198", "regNo": "", "name": "김리안", "phone": "6946", "className": "6세 물개반(여아)", "status": "대기", "waitRank": 14}];
         let applicants = [];
         let isAdminAuthenticated = false;
 
         // 페이지 로드 시 초기화
-        let originalHTML;
-        window.onload = function () {
-            originalHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+        function initApp() {
             loadDataFromStorage();
-            window.lucide?.createIcons();
-        };
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        }
 
-        // 데이터 로드 (없으면 샘플 세팅)
+        // 로컬 스토리지에서 명단 불러오기
         function loadDataFromStorage() {
             try {
                 const saved = localStorage.getItem(STORAGE_KEY);
                 if (saved) {
-                    applicants = JSON.parse(saved);
-                } else {
-                    applicants = JSON.parse(JSON.stringify(EMBEDDED_DATA));
-                    saveDataToStorage();
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed)) {
+                        applicants = parsed;
+                        return;
+                    }
                 }
+                applicants = JSON.parse(JSON.stringify(DEFAULT_SAMPLE_DATA));
+                saveDataToStorage();
             } catch (e) {
                 console.error('로컬 스토리지 로드 오류:', e);
-                applicants = JSON.parse(JSON.stringify(EMBEDDED_DATA));
+                applicants = JSON.parse(JSON.stringify(DEFAULT_SAMPLE_DATA));
             }
         }
 
@@ -606,7 +606,7 @@
             `;
 
             modal.classList.remove('hidden');
-            window.lucide?.createIcons();
+            lucide.createIcons();
         }
 
         function showConfirm(title, message, onConfirmCallback) {
@@ -627,7 +627,7 @@
             `;
 
             modal.classList.remove('hidden');
-            window.lucide?.createIcons();
+            lucide.createIcons();
 
             document.getElementById('dialogCancelBtn').onclick = () => closeModal('customDialogModal');
             document.getElementById('dialogOkBtn').onclick = () => {
@@ -704,7 +704,7 @@
                 resultContainer.innerHTML = matches.map(person => renderResultCard(person)).join('<div class="h-4"></div>');
             }
 
-            window.lucide?.createIcons();
+            lucide.createIcons();
             resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
@@ -749,9 +749,9 @@
                                     신입단원 등록 기간 및 절차 안내
                                 </h4>
                                 <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2.5 leading-relaxed">
-                                    <p><strong class="text-slate-900">1. 등록 기간:</strong> 추첨 발표일로부터 3일간 (평일 09:00 ~ 18:00)</p>
+                                    <p><strong class="text-slate-900">등록 기간 :</strong> 2026.11.26.~30.(평일 20시, 토요일 17시 까지)</p>
                                     <p><strong class="text-slate-900">2. 등록 장소:</strong> 동대문구민체육센터 1층 안내데스크 방문 접수</p>
-                                    <p><strong class="text-slate-900">3. 지참 서류:</strong> 주민등록등본 1부(원아 생년월일 확인용), 보호자 신분증, 결제 카드</p>
+                                    <p><strong class="text-slate-900">지참 서류 :</strong> 원서(사진부착), 현금 및 카드(제로페이 X)</p>
                                     <p class="text-xs text-rose-600 font-semibold pt-1">※ 지정된 등록 기간 내 미등록 시 당첨이 자동 취소되며 예비 순번자에게 기회가 부여됩니다.</p>
                                 </div>
                             </div>
@@ -801,7 +801,7 @@
                                 <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-2 leading-relaxed">
                                     <p>• 본 추첨에서 <strong>${escapeHTML(person.className)} ${escapeHTML(rankDisplay)}</strong>으로 배정되셨습니다.</p>
                                     <p>• 당첨자 미등록 또는 결원 발생 시 <strong>예비 순번 순서대로 유아체능단 사무실에서 개별 유선 연락</strong>을 드립니다.</p>
-                                    <p>• 연락처가 변경된 경우 유아체능단 사무실(02-2247-9772~5)로 미리 알려주시기 바랍니다.</p>
+                                    <p>• 연락처가 변경된 경우 유아체능단 사무실(02-6929-0768 / 평일 10:00~17:00, 점심시간 12:00~13:00)로 미리 알려주시기 바랍니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -853,7 +853,7 @@
                 btnParent.classList.add('hidden');
                 btnAdmin.classList.remove('hidden');
             }
-            window.lucide?.createIcons();
+            lucide.createIcons();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1054,18 +1054,9 @@
 송강호\t5566\t5세 해달반\t당첨\t`;
         }
 
-        async function handleCSVFile(event) {
+        function handleCSVFile(event) {
             const file = event.target.files[0];
             if (!file) return;
-            if (/\.xlsx?$/i.test(file.name)) {
-                try {
-                    if (!window.XLSX) throw new Error('엑셀 모듈을 불러오지 못했습니다.');
-                    const book = XLSX.read(await file.arrayBuffer());
-                    const rows = XLSX.utils.sheet_to_json(book.Sheets[book.SheetNames[0]], {header:1, defval:'', raw:false});
-                    document.getElementById('bulkPasteArea').value = rows.map(row => row.join('\t')).join('\n');
-                } catch(e) { showAlert('엑셀 읽기 실패', e.message, 'error'); }
-                return;
-            }
             const reader = new FileReader();
             reader.onload = function (e) {
                 document.getElementById('bulkPasteArea').value = e.target.result;
@@ -1086,8 +1077,8 @@
             let baseIndex = mode === 'append' ? applicants.length + 101 : 101;
 
             lines.forEach((line, i) => {
-                const trimmed = line.replace(/^\uFEFF/, '');
-                if (!trimmed.trim()) return;
+                const trimmed = line.trim();
+                if (!trimmed) return;
 
                 // 탭(\t) 우선 분리, 없으면 쉼표(,) 분리
                 const cols = trimmed.includes('\t')
@@ -1105,13 +1096,12 @@
                     const digits = (cols[1] || '').replace(/[^0-9]/g, '');
                     const phone = digits.slice(-4).padStart(4, '0');
                     const className = cols[2] || '미지정 반';
-                    const rawStatus = cols[3] || '';
-                    if (!['당첨','대기','예비','합격'].includes(rawStatus)) return;
+                    const rawStatus = cols[3] || '당첨';
                     const status = rawStatus.includes('대기') || rawStatus.includes('예비') ? '대기' : '당첨';
                     const rawRank = (cols[4] || '').replace(/[^0-9]/g, '');
-                    const waitRank = status === '대기' ? (parseInt(rawRank, 10) || null) : null;
+                    const waitRank = status === '대기' ? (parseInt(rawRank, 10) || 1) : null;
 
-                    if (name && digits.length >= 1 && (status !== '대기' || waitRank > 0)) {
+                    if (name && digits.length >= 1) {
                         parsedList.push({
                             id: Date.now().toString() + '_' + i + '_' + Math.random().toString(36).slice(2, 5),
                             regNo: `2027-${String(baseIndex++).padStart(4, '0')}`,
@@ -1142,11 +1132,6 @@
             showAlert('일괄 등록 완료', `총 ${parsedList.length}명의 추첨 데이터가 정상적으로 반영되었습니다.`, 'success');
         }
 
-        function exportHTML() {
-            const source = originalHTML.replace(/const EMBEDDED_DATA = [^\n]*;/, () => 'const EMBEDDED_DATA = ' + JSON.stringify(applicants).replace(/</g, '\\u003c') + ';').replace(/const STORAGE_KEY = '[^']*';/, () => "const STORAGE_KEY = 'ddm_lottery_" + Date.now() + "';");
-            const url = URL.createObjectURL(new Blob([source], {type:'text/html;charset=utf-8'}));
-            const a = document.createElement('a'); a.href=url; a.download='추첨결과_내부용.html'; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
-        }
         function exportCSV() {
             if (applicants.length === 0) {
                 showAlert('다운로드 안내', '내보낼 데이터가 없습니다.', 'error');
@@ -1182,6 +1167,13 @@
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
+        }
+
+        // DOM 준비 완료 시 앱 초기화 실행
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
         }
     </script>
 </body>
